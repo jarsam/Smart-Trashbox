@@ -46,8 +46,8 @@ def move(x,y):
 			for i in range(4):
 				if photo[i] != GPIO.input(input_list[i]):
 					photo[i] = (photo[i]+1)%2
-					rotate[i]++
-			if rotate[0]*4*3.141592*wheel_r < abs(x) && (end_flag & 1) == 0:
+					rotate[i] += 1
+			if rotate[0]*4*3.141592*wheel_r < abs(x) and (end_flag & 1) == 0:
 				if rotate[0] - rotate[1] > 2:
 					GPIO.output(29,0)
 					GPIO.output(31,0)
@@ -74,7 +74,7 @@ def move(x,y):
 				GPIO.output(33,1)
 				GPIO.output(35,1)
 				end_flag += 1
-			if rotate[2]*4*3.141592*wheel_r < abs(y) && (end_flag & 2) == 0:
+			if rotate[2]*4*3.141592*wheel_r < abs(y) and (end_flag & 2) == 0:
 				if rotate[3] - rotate[4] > 2:
 					GPIO.output(32,0)
 					GPIO.output(36,0)
